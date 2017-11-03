@@ -1,4 +1,4 @@
-namespace Chinook.Data.Entities
+namespace Chinook.Data
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Chinook.Data.Entities
         public Track()
         {
             InvoiceLines = new HashSet<InvoiceLine>();
-            PlaylistTracks = new HashSet<PlaylistTrack>();
+            Playlists = new HashSet<Playlist>();
         }
 
         public int TrackId { get; set; }
@@ -47,6 +47,6 @@ namespace Chinook.Data.Entities
         public virtual MediaType MediaType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlaylistTrack> PlaylistTracks { get; set; }
+        public virtual ICollection<Playlist> Playlists { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 #region Additional Namespaces
 using Chinook.Data.Entities;
 using ChinookSystem.BLL;
+using Chinook.Data;
 #endregion
 public partial class SamplePages_TabbedCRUDReview : System.Web.UI.Page
 {

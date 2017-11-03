@@ -4,10 +4,8 @@ namespace ChinookSystem.DAL
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Chinook.Data;
 
-    #region Additional Namespaces
-    using Chinook.Data.Entities;
-    #endregion
     public partial class ChinookContext : DbContext
     {
         public ChinookContext()
@@ -24,7 +22,6 @@ namespace ChinookSystem.DAL
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<MediaType> MediaTypes { get; set; }
         public virtual DbSet<Playlist> Playlists { get; set; }
-        public virtual DbSet<PlaylistTrack> PlaylistTracks { get; set; }
         public virtual DbSet<Track> Tracks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -72,9 +69,9 @@ namespace ChinookSystem.DAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Playlist>()
-                .HasMany(e => e.PlaylistTracks)
-                .WithRequired(e => e.Playlist)
-                .WillCascadeOnDelete(false);
+                .HasMany(e => e.Tracks)
+                .WithMany(e => e.Playlists)
+                .Map(m => m.ToTable("PlaylistTracks").MapLeftKey("PlaylistId").MapRightKey("TrackId"));
 
             modelBuilder.Entity<Track>()
                 .Property(e => e.UnitPrice)
@@ -82,11 +79,6 @@ namespace ChinookSystem.DAL
 
             modelBuilder.Entity<Track>()
                 .HasMany(e => e.InvoiceLines)
-                .WithRequired(e => e.Track)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Track>()
-                .HasMany(e => e.PlaylistTracks)
                 .WithRequired(e => e.Track)
                 .WillCascadeOnDelete(false);
         }

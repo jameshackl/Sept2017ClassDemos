@@ -1,4 +1,4 @@
-namespace Chinook.Data.Entities
+namespace Chinook.Data
 {
     using System;
     using System.Collections.Generic;
@@ -11,19 +11,15 @@ namespace Chinook.Data.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Playlist()
         {
-            PlaylistTracks = new HashSet<PlaylistTrack>();
+            Tracks = new HashSet<Track>();
         }
 
         public int PlaylistId { get; set; }
 
-        [Required]
         [StringLength(120)]
         public string Name { get; set; }
 
-        [StringLength(120)]
-        public string UserName { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlaylistTrack> PlaylistTracks { get; set; }
+        public virtual ICollection<Track> Tracks { get; set; }
     }
 }

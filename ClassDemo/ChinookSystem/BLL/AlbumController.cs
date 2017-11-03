@@ -9,6 +9,7 @@ using Chinook.Data.Entities;
 using ChinookSystem.DAL;
 using System.ComponentModel;  //expose methods for ODS wizard
 using Chinook.Data.POCOs;
+using Chinook.Data;
 #endregion
 
 namespace ChinookSystem.BLL

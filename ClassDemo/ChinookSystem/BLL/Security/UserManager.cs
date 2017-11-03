@@ -13,6 +13,7 @@ using ChinookSystem.DAL.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel;
+using Chinook.Data;
 #endregion
 
 namespace ChinookSystem.BLL.Security
